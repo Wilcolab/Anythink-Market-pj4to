@@ -9,20 +9,27 @@ mongoose.connect(process.env.MONGODB_URI);
 
 let UserModel = require('mongoose').model('User');
 let ItemModel = require('mongoose').model('Item');
+const SEED_COUNT = 100;
 
-let user = new UserModel();
-user.username = 'oldmcdonald9';
-user.email = 'oldmcdonald9@gmail.com';
-user.setPassword('old');
-user
-  .save()
+for (let i=0; i < SEED_COUNT; i++)
+{
+  let user = new UserModel();
+  user.username = 'oldmacdonald'+i;
+  user.email = 'oldmacdonald'+i+'@gmail.com';
+  user.setPassword('old'+i);
+  user
+    .save()
     .then(function (user) {
+      console.log('Added user:' + user.email);
       return ItemModel.create(
-        { title: 'mouse3', description: 'mickey3', seller: user });
-    }).then(function (){
-      mongoose.disconnect();
-    });
+        {title: 'Cow'+i, description: 'Black cow, with '+i+' white spots', seller: user});
+    }).then(function () {
+      if (i==SEED_COUNT-1){
+        mongoose.disconnect();
+      }
 
+  });
+}
 // UserModel.findOne({ username:'bobby' }).exec()
 //   .then(function (user) {
 //     return ItemModel.create(
@@ -30,4 +37,5 @@ user
 //   }).then(function (){
 //     mongoose.disconnect();
 // });
+
 console.log("done seeding");

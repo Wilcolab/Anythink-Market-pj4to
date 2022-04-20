@@ -5,7 +5,7 @@ require("../models/User");
 require("../models/Item");
 require("../models/Comment");
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {poolSize: 10});
 
 let UserModel = require('mongoose').model('User');
 let ItemModel = require('mongoose').model('Item');

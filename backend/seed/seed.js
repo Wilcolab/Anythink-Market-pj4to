@@ -12,7 +12,7 @@ const SEED_COUNT = 100;
 const USER_SEED_NAME = "dua";
 const ITEM_SEED_NAME = "Cow";
 const USER_SEED_PASS = "lipa";
-const USER_SEED_IMAGE = "dualipa.png";
+const USER_SEED_IMAGE = "/dualipa.png";
 const COMMENT_SEED_BODY = "Life is like a box of chocolate";
 
 //Add users

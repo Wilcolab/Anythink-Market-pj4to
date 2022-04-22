@@ -52,3 +52,20 @@ body {
   z-index: 1041;
   background-size: cover;
 }
+.img {
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .body{
+    width:350px;
+  }
+  .img{
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 601px) {
+
+}

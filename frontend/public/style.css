@@ -52,3 +52,7 @@ body {
   z-index: 1041;
   background-size: cover;
 }
+.img {
+  max-width: 100%;
+  display: block;
+}

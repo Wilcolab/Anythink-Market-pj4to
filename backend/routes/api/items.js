@@ -5,6 +5,7 @@ var Comment = mongoose.model("Comment");
 var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
+const DEFAULT_IMAGE = "/placeholder.png";
 
 // Preload item objects on routes with ':item'
 router.param("item", function(req, res, next, slug) {
@@ -87,6 +88,7 @@ router.get("/", auth.optional, function(req, res, next) {
           items: await Promise.all(
             items.map(async function(item) {
               item.seller = await User.findById(item.seller);
+              item.image = item.image || DEFAULT_IMAGE;
               return item.toJSONFor(user);
             })
           ),
@@ -184,6 +186,9 @@ router.put("/:item", auth.required, function(req, res, next) {
 
       if (typeof req.body.item.image !== "undefined") {
         req.item.image = req.body.item.image;
+      }
+      else {
+        req.item.image = DEFAULT_IMAGE;
       }
 
       if (typeof req.body.item.tagList !== "undefined") {

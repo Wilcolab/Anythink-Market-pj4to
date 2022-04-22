@@ -57,5 +57,15 @@ body {
 }
 
 .user-info {
-  min-width: 800px;
+  min-width: 100%;
+}
+
+@include media-breakpoint-up(150px) {
+  body {
+    max-width: 100%;
+    background-color: lightblue;
+  }
+  img {
+    max-width: 100%;
+  }
 }

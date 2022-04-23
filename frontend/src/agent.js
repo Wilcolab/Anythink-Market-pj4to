@@ -7,8 +7,8 @@ const API_ROOT =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:3000/api"
     : process.env.BACKEND_URL
-      ? process.env.BACKEND_URL
-      :"https://api.anythink.market/api";
+    ? process.env.BACKEND_URL
+    : "https://api.anythink.market/api";
 
 const encode = encodeURIComponent;
 const responseBody = (res) => res.body;

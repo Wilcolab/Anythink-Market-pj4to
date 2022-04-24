@@ -15,7 +15,7 @@ var isProduction = process.env.NODE_ENV === "production";
 // Create global app object
 var app = express();
 
-app.use(cors());
+app.use(cors({origin: 'https://anythink-market-pj4to.herokuapp.com/'}));
 
 // Normal express config defaults
 app.use(require("morgan")("dev"));
